@@ -1,5 +1,7 @@
 package com.example.littlelemon
 
+import android.content.Context
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -10,6 +12,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -19,27 +22,29 @@ import androidx.compose.ui.unit.sp
 import com.example.littlelemon.ui.theme.LittleLemonColor
 
 @Composable
-fun UpperPanel() {
+fun UpperPanel(context:Context) {
     Column(
         modifier = Modifier
-            .padding(start = 12.dp, end = 12.dp, top = 16.dp, bottom = 16.dp)
+            .padding(top = 16.dp)
             .background(LittleLemonColor.green)
     ) {
         Text(
             text = stringResource(id = R.string.title),
             fontSize = 40.sp,
             fontWeight = FontWeight.Bold,
-            color = LittleLemonColor.yellow
+            color = LittleLemonColor.yellow,
+            modifier = Modifier.padding(start = 16.dp)
         )
         Text(
             text = stringResource(id = R.string.location),
             fontSize = 24.sp,
-            color = LittleLemonColor.cloud
+            color = LittleLemonColor.cloud,
+            modifier = Modifier.padding(start = 16.dp)
         )
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier
-                .padding(top = 20.dp)
+                .padding(top = 20.dp, start = 16.dp, end = 16.dp)
         ) {
             Text(
                 text = stringResource(id = R.string.description),
@@ -56,7 +61,11 @@ fun UpperPanel() {
             )
         }
         Button(
-            onClick = { }
+            onClick = {
+                      Toast.makeText(context, "Order Take Away", Toast.LENGTH_SHORT).show()
+            },
+            modifier = Modifier
+                .padding(top = 20.dp, bottom = 20.dp, start = 16.dp, end = 16.dp)
         ) {
             Text(
                 text = stringResource(id = R.string.order_button_text)
@@ -65,8 +74,8 @@ fun UpperPanel() {
     }
 }
 
-@Preview(showBackground = true)
+
 @Composable
-fun UpperPanelPreview() {
-    UpperPanel()
+fun UpperPanelPreview(context: Context) {
+    UpperPanel(context)
 }

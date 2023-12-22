@@ -3,6 +3,7 @@ package com.example.littlelemon
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.ui.platform.LocalContext
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -25,7 +26,7 @@ class MainActivity : ComponentActivity() {
                         arguments = listOf(navArgument(DishDetails.argDishId) { type = NavType.IntType })
                     ) {
                         val id = requireNotNull(it.arguments?.getInt(DishDetails.argDishId)) { "Dish id is null" }
-                        DishDetails(id)
+                        DishDetails(id, LocalContext.current)
                     }
                 }
             }

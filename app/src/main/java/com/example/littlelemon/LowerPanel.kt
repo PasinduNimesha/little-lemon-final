@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.littlelemon.ui.theme.LittleLemonColor
@@ -41,7 +42,9 @@ fun WeeklySpecialCard() {
             text = stringResource(R.string.weekly_special),
             style = MaterialTheme.typography.h4,
             modifier = Modifier
-                .padding(8.dp)
+                .padding(5.dp),
+
+
         )
     }
 }
@@ -51,13 +54,14 @@ fun WeeklySpecialCard() {
 fun MenuDish(navController: NavHostController? = null, dish: Dish) {
     Card(onClick = {
         Log.d("AAA", "Click ${dish.id}")
-        navController?.navigate(DishDetails.route + "/${dish.id}")
-    }) {
-        Row() {
+        navController?.navigate(DishDetails.route + "/${dish.id}") },
+    ) {
+        Row(Modifier.padding(start = 8.dp, end = 8.dp)) {
             Column {
                 Text(
                     text = dish.name,
-                    style = MaterialTheme.typography.h5,
+                    style = MaterialTheme.typography.h6,
+                    fontWeight = FontWeight.Bold,
                 )
                 Text(
                     text = dish.description,
@@ -65,7 +69,7 @@ fun MenuDish(navController: NavHostController? = null, dish: Dish) {
                     modifier = Modifier
                         .fillMaxWidth(.75f)
                 )
-                Text(text = dish.price.toString(),
+                Text(text = "$"+dish.price.toString(),
                     style = MaterialTheme.typography.body2
                 )
             }
