@@ -1,5 +1,6 @@
 package com.example.littlelemon
 
+import android.graphics.drawable.Animatable
 import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
@@ -10,7 +11,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
@@ -19,6 +20,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.littlelemon.ui.theme.LittleLemonColor
+import androidx.compose.animation.core.*
+
+import androidx.compose.runtime.remember
+import androidx.compose.ui.graphics.Color
 
 @Composable
 fun LowerPanel(navController: NavHostController, dishes: List<Dish> = listOf()) {
